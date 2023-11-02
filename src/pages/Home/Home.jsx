@@ -1,4 +1,4 @@
-require('dotenv').config()
+
 import React, { useContext, useEffect } from "react";
 import axios from "axios";
 import { UserContext } from "../../context/UserContext";
@@ -6,13 +6,13 @@ import { Link, useNavigate } from "react-router-dom";
 import Question from "./Question";
 import "./Home.css";
 
-function Home({ logout }) {
+function Home() {
   const [userData, setUserData] = useContext(UserContext);
   const navigate = useNavigate();
   useEffect(() => {
     if (!userData.user) navigate("/login");
     const fetch = async () => {
-      const response = await axios.get(`${process.env.REACT_APP_base_url}/api/questions`);
+      const response = await axios.get(`${import.meta.env.VITE_REACT_APP_base_url}/api/questions`);
       setUserData({
         ...userData,
         questions: response.data.questions,
@@ -22,17 +22,7 @@ function Home({ logout }) {
   }, [userData.user, navigate]);
   // console.log(userData);
 
-  const handClick = (item) => {
-    setUserData({
-      ...userData,
-      singleQuestion: {
-        post_id: item.post_id,
-        question_id: item.question_id,
-      },
-    });
-    // console.log(userData);
-    navigate("/answer");
-  };
+ 
 
   return (
     <div className="home">

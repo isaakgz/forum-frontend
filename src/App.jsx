@@ -1,5 +1,3 @@
-
-require('dotenv').config()
 import axios from "axios";
 import { useContext, useEffect } from "react";
 import "./App.css";
@@ -25,9 +23,12 @@ function App() {
       token = "";
     } else {
       //if token exists in localStorage then send request to auth to verify token and get user info
-      const userRes = await axios.get(`${process.env.REACT_APP_base_url}/api/users`, {
-        headers: { "x-auth-token": token },
-      });
+      const userRes = await axios.get(
+        `${import.meta.env.VITE_REACT_APP_base_url}/api/users`,
+        {
+          headers: { "x-auth-token": token },
+        }
+      );
 
       //set the global state with user info
       // the first .data is to access axios response and the other the user info responded from backend use data as a key
@@ -61,15 +62,16 @@ function App() {
     <Router>
       <div>
         <Routes>
-          <Route path="/signup" element={
-            <div>
-
-          <Header  logout={logout}/>
-          <Signup />
-          <Footer />
-            </div>
-
-          } />
+          <Route
+            path="/signup"
+            element={
+              <div>
+                <Header logout={logout} />
+                <Signup />
+                <Footer />
+              </div>
+            }
+          />
           <Route
             path="/login"
             element={
@@ -81,26 +83,36 @@ function App() {
             }
           />
           {/* passing logout function as props to Home page */}
-          <Route path="/" element={<div>
-            <Header logout={logout}/>
-            <Home logout={logout} />
-            <Footer  />
-
-          </div>} />
-          <Route path="/questions" element={<div>
-            <Header logout={logout} />
-            <Ask />
-            <Footer />
-
-          </div>} />
-          <Route path="/answer" element={<div>
-            <Header logout={logout} />
-            <Answer />
-            <Footer />
-
-          </div>} />
-
-
+          <Route
+            path="/"
+            element={
+              <div>
+                <Header logout={logout} />
+                <Home logout={logout} />
+                <Footer />
+              </div>
+            }
+          />
+          <Route
+            path="/questions"
+            element={
+              <div>
+                <Header logout={logout} />
+                <Ask />
+                <Footer />
+              </div>
+            }
+          />
+          <Route
+            path="/answer"
+            element={
+              <div>
+                <Header logout={logout} />
+                <Answer />
+                <Footer />
+              </div>
+            }
+          />
         </Routes>
       </div>
     </Router>

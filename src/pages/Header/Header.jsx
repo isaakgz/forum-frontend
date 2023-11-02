@@ -1,5 +1,5 @@
 import React, { useContext, useRef } from "react";
-import { FaBars, FaBeer, FaTimes } from "react-icons/fa";
+import { FaBars,  FaTimes } from "react-icons/fa";
 import "./Header.css";
 import { Link } from "react-router-dom";
 import logo from "../../assets/evangadi-logo-home.png";

@@ -1,4 +1,3 @@
-require('dotenv').config()
 import React, { useContext, useEffect } from "react";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
@@ -15,7 +14,9 @@ function Question() {
   useEffect(() => {
     if (!userData.user) navigate("/login");
     const fetch = async () => {
-      const response = await axios.get(`${process.env.REACT_APP_base_url}/api/questions`);
+      const response = await axios.get(
+        `${import.meta.env.VITE_REACT_APP_base_url}/api/questions`
+      );
       setUserData({
         ...userData,
         questions: response.data.questions,
@@ -41,13 +42,11 @@ function Question() {
   return (
     <div className="question">
       {userData.questions?.map((item) => (
-        
         <div
           className="question__container"
           key={item.index}
           onClick={() => handClick(item)}
         >
-        
           <div className="question__profile">
             <div>
               <AccountCircleOutlinedIcon
@@ -56,7 +55,9 @@ function Question() {
                   opacity: 0.5,
                 }}
               />
-              <p style={{ textAlign: "center" , paddingBottom:"10px"}}>{item.user_name}</p>
+              <p style={{ textAlign: "center", paddingBottom: "10px" }}>
+                {item.user_name}
+              </p>
             </div>
             <div className="question__text">{item.question}</div>
           </div>
@@ -72,7 +73,6 @@ function Question() {
             </Link>
           </div>
         </div>
-        
       ))}
     </div>
   );

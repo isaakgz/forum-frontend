@@ -1,4 +1,4 @@
-require('dotenv').config()
+
 import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../context/UserContext";
 import { Link, useNavigate } from "react-router-dom";
@@ -8,7 +8,6 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 
 import axios from "axios";
 import "./Login.css";
-import Visibility from "@mui/icons-material/Visibility";
 
 function Login() {
   const [userData, setUserData] = useContext(UserContext);
@@ -29,7 +28,7 @@ function Login() {
     try {
       //sending user data to database to be logged in
       const loginRes = await axios.post(
-        `${process.env.REACT_APP_base_url}/api/users/login`,
+        `${import.meta.env.VITE_REACT_APP_base_url}/api/users/login`,
         {
           email: form.email,
           password: form.password,
