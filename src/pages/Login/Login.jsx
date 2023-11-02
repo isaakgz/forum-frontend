@@ -2,10 +2,12 @@ import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../context/UserContext";
 import { Link, useNavigate } from "react-router-dom";
 import WarningAmberIcon from "@mui/icons-material/WarningAmber";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 
 import axios from "axios";
 import "./Login.css";
-import { Fab } from "@mui/material";
+import Visibility from "@mui/icons-material/Visibility";
 
 function Login() {
   const [userData, setUserData] = useContext(UserContext);
@@ -13,7 +15,7 @@ function Login() {
   const [form, setForm] = useState({});
   const [showErorr, setShowErorr] = useState(false);
   const [notUser, setNotUser] = useState(false);
- 
+  const [passwordVisible, setPasswordVisible] = useState(false);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -24,8 +26,6 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      
-
       //sending user data to database to be logged in
       const loginRes = await axios.post(
         "http://localhost:3000/api/users/login",
@@ -53,11 +53,11 @@ function Login() {
         setShowErorr(true);
         return;
       }
-      
+
       setNotUser(true);
-      setShowErorr(false)
-      const massage = err.response.data.msg;
-      
+      setShowErorr(false);
+      // const massage = err.response.data.msg;
+
       // alert(err.response.data.msg);
     }
   };
@@ -103,14 +103,25 @@ function Login() {
                 placeholder=" Your Email "
               />
             </div>
-            <div>
+            <div className="password-input">
               <input
                 className="login__input"
-                type="password"
+                type={passwordVisible ? "text" : "password"}
                 name="password"
                 onChange={handleChange}
                 placeholder=" Your Password"
               />
+              <div onClick={()=>{
+                setPasswordVisible(!passwordVisible)
+              }} className="password-visibility-icon">
+                {passwordVisible ? (
+                  <VisibilityIcon style={{ opacity: "0.5", width: "20px" }} />
+                ) : (
+                  <VisibilityOffIcon
+                    style={{ opacity: "0.5", width: "20px" }}
+                  />
+                )}
+              </div>
             </div>
             <button className="login__btn">Submit</button>
           </form>

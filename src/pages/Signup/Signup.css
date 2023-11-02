@@ -45,7 +45,6 @@
 .signup__dicription--orange a {
   color: #da7000;
   text-decoration: none;
-  
 }
 
 .signup__input {
@@ -71,7 +70,6 @@
   padding-left: 10px;
 }
 
-
 .signup__btn {
   font-size: 18px;
   width: 100%;
@@ -88,8 +86,8 @@
   border-radius: 5px;
   cursor: pointer;
 }
-.signup__btn:hover{
-    background-color:#da7000 ;
+.signup__btn:hover {
+  background-color: #da7000;
 }
 
 /* about */

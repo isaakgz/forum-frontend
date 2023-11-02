@@ -30,10 +30,12 @@
   align-items: center;
   margin-top: 10px;
   margin-bottom: 20px;
+  border-bottom: 1px rgb(179, 169, 169) solid;
 }
 .answer__profile > p,
 a {
   text-align: center;
+  margin-bottom: 10px;
 }
 .answer__form{
     width: 100%;

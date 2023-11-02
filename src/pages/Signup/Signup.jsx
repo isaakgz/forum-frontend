@@ -1,11 +1,13 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import WarningAmberIcon from "@mui/icons-material/WarningAmber";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 
 import { UserContext } from "../../context/UserContext";
 import axios from "axios";
 import "./Signup.css";
-import { FaEye } from "react-icons/fa";
+
 function Signup() {
   const [form, setForm] = useState({});
   const navigate = useNavigate();
@@ -13,21 +15,17 @@ function Signup() {
   const [emptyFieldError, setEmptyFieldError] = useState(false);
   const [passwordLengthError, setPasswordLengthError] = useState(false);
   const [emailAlreadyRegistered, setEmailAlreadyRegistered] = useState(false);
+  const [passwordVisible, setPasswordVisible] = useState(false);
   
-  function togglePasswordVisibility() {
-    var passwordInput = document.getElementById("password");
-    if (passwordInput.type === "password") {
-      passwordInput.type = "text";
-    } else {
-      passwordInput.type = "password";
-    }
-  }
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
     setEmptyFieldError(false);
     setPasswordLengthError(false); // Reset password length error
     setEmailAlreadyRegistered(false);
+    
+
+
   };
 
   const handleSubmit = async (e) => {
@@ -160,18 +158,26 @@ function Signup() {
                 placeholder="  User Name "
               />
             </div>
-            <div>
+            <div className="password-input">
               <input
                 id="password"
                 className="signup__input"
-                type="password"
+                type={passwordVisible ? "text" : "password"}
                 name="password"
                 onChange={handleChange}
                 placeholder="  Password "
               />
-              <span onClick={togglePasswordVisibility}>
-                <FaEye />
-              </span>
+              <div onClick={()=>{
+                setPasswordVisible(!passwordVisible)
+              }} className="password-visibility-icon">
+                {passwordVisible ? (
+                  <VisibilityIcon style={{ opacity: "0.5", width: "20px" }} />
+                ) : (
+                  <VisibilityOffIcon
+                    style={{ opacity: "0.5", width: "20px" }}
+                  />
+                )}
+              </div>
             </div>
             <p>
               I agree to the{" "}
