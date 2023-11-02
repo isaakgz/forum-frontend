@@ -1,3 +1,5 @@
+
+require('dotenv').config()
 import axios from "axios";
 import { useContext, useEffect } from "react";
 import "./App.css";
@@ -23,7 +25,7 @@ function App() {
       token = "";
     } else {
       //if token exists in localStorage then send request to auth to verify token and get user info
-      const userRes = await axios.get("http://localhost:3000/api/users", {
+      const userRes = await axios.get(`${process.env.REACT_APP_base_url}/api/users`, {
         headers: { "x-auth-token": token },
       });
 

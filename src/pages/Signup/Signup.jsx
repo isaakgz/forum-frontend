@@ -1,3 +1,4 @@
+require('dotenv').config()
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import WarningAmberIcon from "@mui/icons-material/WarningAmber";
@@ -56,7 +57,7 @@ function Signup() {
     try {
       //sending data to be registered in database
       const response = await axios.post(
-        "http://localhost:3000/api/users",
+        `${process.env.REACT_APP_base_url}/api/users`,
         form
       );
 
@@ -67,7 +68,7 @@ function Signup() {
 
       //once registered the login automatically so send the new user info to be logged in
       const loginRes = await axios.post(
-        "http://localhost:3000/api/users/login",
+        `${process.env.REACT_APP_base_url}/api/users/login`,
         {
           email: form.email,
           password: form.password,
@@ -87,7 +88,7 @@ function Signup() {
       navigate("/");
     } catch (error) {
       // setShowError(true);
-      console.log("problem ==>", error.response.data.msg);
+      // console.log("problem ==>", error.response.data.msg);
       setEmailAlreadyRegistered(true)
     }
   };

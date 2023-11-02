@@ -1,3 +1,4 @@
+require('dotenv').config()
 import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../context/UserContext";
 import { Link, useNavigate } from "react-router-dom";
@@ -28,7 +29,7 @@ function Login() {
     try {
       //sending user data to database to be logged in
       const loginRes = await axios.post(
-        "http://localhost:3000/api/users/login",
+        `${process.env.REACT_APP_base_url}/api/users/login`,
         {
           email: form.email,
           password: form.password,

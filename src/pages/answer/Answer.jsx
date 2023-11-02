@@ -1,3 +1,4 @@
+require('dotenv').config()
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
@@ -22,7 +23,7 @@ function Answer() {
     }
     const fetch = async () => {
       const response = await axios.post(
-        "http://localhost:3000/api/questions/id",
+        `${process.env.REACT_APP_base_url}/api/questions/id`,
         {
           post_id: userData.singleQestion.post_id,
         }
@@ -34,7 +35,7 @@ function Answer() {
 
   useEffect(() => {
     const get = async () => {
-      const res = await axios.post("http://localhost:3000/api/answers/all", {
+      const res = await axios.post(`${process.env.REACT_APP_base_url}/api/answers/all`, {
         question_id: userData.singleQestion.question_id,
       });
       // console.log(res);
@@ -59,7 +60,7 @@ function Answer() {
         return;
       }
 
-      await axios.post("http://localhost:3000/api/answers", {
+      await axios.post(`${process.env.REACT_APP_base_url}/api/answers`, {
         answer: form.answer,
         user_id: userData.user.id,
         question_id: post.question_id,

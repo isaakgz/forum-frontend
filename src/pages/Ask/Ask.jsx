@@ -1,3 +1,4 @@
+require('dotenv').config()
 import React, { useContext, useState } from "react";
 import "./ask.css";
 import { Link, useNavigate } from "react-router-dom";
@@ -26,7 +27,7 @@ function Ask() {
         return;
       }
       //sending the question to database
-      const response = await axios.post("http://localhost:3000/api/questions",{
+      const response = await axios.post(`${process.env.REACT_APP_base_url}/api/questions`,{
         user_id: userData.user.id,
         question: form.title,
         question_description: form.description,

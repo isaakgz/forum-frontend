@@ -1,3 +1,4 @@
+require('dotenv').config()
 import React, { useContext, useEffect } from "react";
 import axios from "axios";
 import { UserContext } from "../../context/UserContext";
@@ -11,7 +12,7 @@ function Home({ logout }) {
   useEffect(() => {
     if (!userData.user) navigate("/login");
     const fetch = async () => {
-      const response = await axios.get("http://localhost:3000/api/questions");
+      const response = await axios.get(`${process.env.REACT_APP_base_url}/api/questions`);
       setUserData({
         ...userData,
         questions: response.data.questions,
@@ -29,7 +30,7 @@ function Home({ logout }) {
         question_id: item.question_id,
       },
     });
-    console.log(userData);
+    // console.log(userData);
     navigate("/answer");
   };
 
