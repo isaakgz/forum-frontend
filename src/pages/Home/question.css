@@ -1,0 +1,29 @@
+.question__container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease; 
+    border-bottom: 1px rgb(179, 169, 169) solid;
+  
+}
+.question__container:hover{
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); 
+    background-color: rgb(232, 236, 236);
+}
+
+hr{
+    opacity: 0.5;
+}
+
+
+.question__profile {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 30px;
+}
+.profile__icon{
+    font-size: 60px;
+}

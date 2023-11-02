@@ -1,0 +1,106 @@
+.ask {
+  min-height: 500px;
+  margin-bottom: 30px;
+}
+
+.ask__container {
+  width: 50%;
+  margin: 30px auto 30px auto;
+}
+
+.ask__instruction {
+  width: 65%;
+  margin: auto;
+}
+
+.ask__instruction > h2 {
+  font-weight: 500;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.ask__instruction > ul {
+  line-height: 25px;
+  margin-bottom: 40px;
+}
+
+.ask__form {
+  width: 100%;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  border-radius: 0.5px;
+}
+
+.ask__form-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.ask__form-title > h2 {
+  font-weight: 500;
+  text-align: center;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+.ask__form-title a {
+  text-decoration: none;
+  color: black;
+  text-align: center;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.ask__form-title a:hover {
+  color: hsl(24, 86%, 43%);
+
+}
+.ask__form form  input {
+   width: 100%;
+   height: 50px;
+   margin-bottom: 10px;
+   border-radius: 10px;
+   border: 1px solid rgba(160, 147, 147, 0.384);
+   
+}
+.ask__form form  input{
+    padding: 10px;
+}
+
+.ask__form form .input__description{
+    height: 110px;
+}
+
+.ask__form form  button{
+    background-color: #516cf0;
+    padding: 10px;
+    border: 0;
+    cursor: pointer;
+    border-radius: 5px;
+    color: #fff;
+    
+}
+.input__description{
+  margin-bottom: 10px;
+}
+.ask__form form  button:hover{
+    background-color: hsl(24, 86%, 43%);;
+}
+.error-box{
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  background-color: #dadada; /* Reddish color for error box background */
+  color: red; /* Text color for error message */
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(255, 99, 71, 0.2); /* Box shadow with animation */
+ 
+
+  /* Additional styles for better visibility and aesthetics */
+  text-align: center;
+  width: 50%;
+  margin: auto;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
