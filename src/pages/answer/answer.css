@@ -80,7 +80,8 @@ a {
  textarea{
     border-radius: 10px;
     padding: 21px;
+ }
     
-.answer__form form button:hover{
+.answer__form form button:hoverv{
     background-color:#da7000 ;
 }
